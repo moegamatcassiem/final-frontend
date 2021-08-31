@@ -4,10 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/3285114a98.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/navbar.css">
   </head>
   <body>
+    <nav class="navbar">
+      <ul class="navbar-links">
+        <li class="navbar-link"><a href="#" class="navbar-anchor">Home</a></li>
+        <li class="navbar-link"><a href="#" class="navbar-anchor">Account</a></li>
+        <li class="navbar-link"><a href="#" class="navbar-anchor">Login</a></li>
+        <li class="navbar-link"><a href="#" class="navbar-anchor">Resgister</a></li>
+      </ul>
+      <button class="navbar-button" onclick="toggleNavbar()"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <div id="filter-buttons">
+      <button onclick="window.location.reload()" class="brand">All</button>
+      <button onclick="productFilter('Speaker')" class="brand">Speaker</button>
+      <button onclick="productFilter('Headphones')" class="brand">Headphones</button>
+      <button onclick="productFilter('Laptop')" class="brand">Laptop</button>
+      <button onclick="productFilter('Gaming')" class="brand">Gaming</button>
+  </div>
+
     <div id="product-container"></div>
-    <script src="./products.js"></script>
+    <script src="./scripts/products.js"></script>
+    <script src="./scripts/navbar.js"></script>
   </body>
 </html>

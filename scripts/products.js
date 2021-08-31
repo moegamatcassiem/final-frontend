@@ -1,11 +1,10 @@
+let localProducts = [];
+
 fetch("https://finals-backend.herokuapp.com/get-products/")
   .then((response) => response.json())
   .then((json) => {
-    console.log(json.data);
-    json.data.forEach((item) => {
-      console.log(item);
-      console.log(item[1]);
-    });
+    localProducts = json.data;
+    console.log(localProducts);
     renderproducts(json.data);
   });
 
@@ -15,12 +14,21 @@ function renderproducts(products) {
 
   products.forEach((data) => {
     productContainer.innerHTML += `
-    <div class="products">
-    <h3 class="product-image items"><img src="${data[5]}"></h3>
+    <div class="products" catergory="${data[1]}">
+    <img class="product-image items" src="${data[5]}">
         <h2 class="product_name items">${data[1]}</h2>
-        <h3 class="product_description items">${data[2]}</h3>
+        <p class="product_description items">${data[2]}</p>
         <h3 class="product_price items">${data[4]}</h3>
     </div>
     `;
   });
 }
+
+function productFilter(category) {
+  let filteredProducts = localProducts.filter((product) =>
+    product[1].toLowerCase().includes(category.toLowerCase())
+  );
+  console.log(filteredProducts);
+  renderproducts(filteredProducts);
+}
+
