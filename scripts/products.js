@@ -19,6 +19,7 @@ function renderproducts(products) {
         <h2 class="product_name items">${data[1]}</h2>
         <p class="product_description items">${data[2]}</p>
         <h3 class="product_price items">${data[4]}</h3>
+        <button class="btn" onclick="addToCart(${data[0]})">Add to cart</button>
     </div>
     `;
   });
@@ -32,3 +33,31 @@ function productFilter(category) {
   renderproducts(filteredProducts);
 }
 
+// let filterProducts = []
+fetch('https://finals-backend.herokuapp.com/get-products/')
+.then((res) => res.json())
+.then(data => {
+    let filterProducts = data.data
+    let searchBar = document.getElementById("search")
+    searchBar.addEventListener("keyup", (a) => {
+        const searchText = a.target.value.toLowerCase()
+        // console.log(searchText);
+        const filteredProducts = filterProducts.filter((data) => {
+            return (
+                data[1].toLowerCase().includes(searchText)
+             )
+        })
+        // console.log(filterProducts)
+        renderproducts(filteredProducts)        
+    })
+})
+
+function addToCart(id) {
+      let cart = JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : []
+      let fillUpCart = localProducts.find((product) => {
+        return  product[0] == id
+      })
+      cart.push(fillUpCart)
+      localStorage.setItem('cart', JSON.stringify(cart))
+      console.log('Product added successfully');
+}

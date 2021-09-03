@@ -20,11 +20,15 @@
     font-family: sans-serif;
     transition: all 0.3s linear;
     z-index: 100;
+    text-decoration: none;
+    color: #ff5f1f;
   }
   
   .navbar-links.active {
     top: 0;
     left: 0;
+    text-decoration: none;
+    color: #ff5f1f;
   }
   
   .navbar-button {
@@ -38,6 +42,7 @@
     outline: none;
     padding: 20px;
     width: 10vw;
+    color: #000;
   }
   
   
