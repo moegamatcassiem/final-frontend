@@ -62,9 +62,13 @@ function addToCart(id) {
   } else {
     cart.push(fillUpCart);
     localStorage.setItem("cart", JSON.stringify(cart));
-    console.log("Product added successfully");
+    let priceTotal = cart.reduce((total, product) => total + parseInt(product[4]), 0)
+    console.log(priceTotal);
+    alert("Product added successfully");
   }
 }
+
+
 
 //admin function
 function showAdminProducts(products) {
@@ -78,7 +82,7 @@ function showAdminProducts(products) {
       <p class="product_description items">${data[2]}</p>
       <h3 class="product_price items">${data[4]}</h3>
       <button onclick="event.preventDefault(), deleteProducts(${data[0]})" class="deletebtn">delete</button>
-      <button onclick="event.preventDefault(), updateProducts(${data[0]})" class="editbtn">edit</button>
+      <button onclick="event.preventDefault(), editProducts(${data[0]})" class="editbtn">edit</button>
     </div>`;
   });
 }
@@ -150,4 +154,23 @@ function deleteProducts(product_id) {
     .then((data) => {
       window.location.reload();
     });
+}
+
+function editProducts(product_id){
+  fetch(`https://finals-backend.herokuapp.com/edit-product/${product_id}`,{
+    method: 'PUT',
+    body: JSON.stringify({
+      product_image: productImage,
+      product_name: productName,
+      product_description: productDescription,
+      product_price: productPrice
+    }),
+    headers: {
+      "Content-type": "application/json",
+    },
+  })
+  .then((response) => response.json())
+  .then(data => {
+    window.location.reload()
+  })
 }

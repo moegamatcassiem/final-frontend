@@ -10,6 +10,7 @@
     ></script>
     <link rel="stylesheet" href="./styles/styles.css">
     <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/cart.css">
   </head>
   <body>
     <div class="topbar">
@@ -22,6 +23,19 @@
         </ul>
         <button class="navbar-button" onclick="toggleNavbar()"><i class="fas fa-bars"></i></button>
       </nav>
+
+      
+        <nav class="cartbar">
+          <ul class="cartbar-links">
+              <div class="cart"></div>
+          </ul>
+          <button class="cartbar-button" onclick="toggleCartbar()"><i class="fas fa-shopping-cart"></i></button>
+        </nav>
+
+      <!-- <div class="class">
+        <a href="./cart.html">Cart</a>
+        <span class="numberthing"></span>
+      </div> -->
 
       <input id="search" type="text" placeholder="Search...">
       <div id="filter-buttons">
@@ -45,9 +59,21 @@
     </form>
   </div>
 
+  <div class="edit-container">
+    <h2>Edit product</h2>
+    <form>
+      <input type="text" id="productName" name="product_name" placeholder="Enter the new name..." required>
+      <input type="text" id="productDescription" name="product_description" placeholder="Enter a new description..." required>
+      <input type="text" id="productQuantity" name="product_quantity" placeholder="Enter a quantity..." required>
+      <input type="text" id="productPrice" name="product_price" placeholder="Enter a different price..." required>
+      <input type="file" id="productImage" name="product_image" onchange="imageConverter()" required>
+    </form>
+  </div>
+
     <div id="product-container"></div>
     <img src="" alt="" class="imgholder">
     <script src="./scripts/products.js"></script>
     <script src="./scripts/navbar.js"></script>
+    <script src="./scripts/cart.js"></script>
   </body>
 </html>

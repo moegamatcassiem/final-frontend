@@ -1,6 +1,10 @@
+function toggleCartbar() {
+  document.getElementsByClassName("cartbar-links")[0].classList.toggle("active");
+}
+
 let cartProducts = [];
 cartProducts =  JSON.parse(localStorage.getItem('cart'));
-let conatiner = document.querySelector('#cart');
+let conatiner = document.querySelector('.cart');
 cartProducts.innerHTML = "";
 
   cartProducts.forEach((data) => {

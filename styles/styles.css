@@ -33,6 +33,7 @@ body {
   border: 1px solid #ff5f1f;
   overflow: hidden;
   color: black;
+  margin-top: 10%;
 }
 
 #search {
@@ -103,8 +104,27 @@ button:hover {
 
 .add-container {
   position: fixed; 
-  top: 50%;
-  left: 50%;
+  top: 20%;
+  left: 20%;
   display: flex;
   z-index: 3;
+  color: #000;
+  /* margin-top: 5%; */
+}
+
+.edit-container {
+  position: fixed; 
+  top: 28%;
+  left: 20%;
+  display: flex;
+  z-index: 100;
+  color: #000;
+}
+
+.class{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 3%;
+  position: fixed;
+  z-index: 100;
 }
