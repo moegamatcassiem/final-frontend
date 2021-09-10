@@ -1,0 +1,69 @@
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+#Login {
+  background-color: white;
+  color: #000;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.log-head {
+  margin: 40px;
+  letter-spacing: 3px;
+}
+
+.form-item {
+  padding: 10px;
+}
+
+.form-stuff{
+    display: flex;
+    flex-direction: column;
+    margin-left: 36%;
+    margin-top: 10%;
+}
+
+input {
+  width: 500px;
+  outline: none;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  color: red;
+  background-color: white;
+  border-bottom: 1px solid #89CFF0;
+}
+
+.link {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5%;
+  text-decoration: none;
+  color: #89CFF0;
+  margin-top: 10%;
+}
+
+.boarder {
+  background-color: white;
+  width: 100vw;
+  height: 10vh;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  margin-left: 12%;
+  margin-top: 5%;
+}
+
+.pass{
+    margin-top: 2%;
+}

@@ -1,5 +1,21 @@
 function toggleCartbar() {
-  document.getElementsByClassName("cartbar-links")[0].classList.toggle("active");
+  let popUp = document.getElementsByClassName("cartbar-links")[0]
+  let body = document.getElementsByClassName("body")
+  let cart = JSON.parse(localStorage.getItem('cart'))
+  if (cart == null) {
+    console.log("empty cart");
+  }
+  else{
+    if (popUp.classList.contains("active")){
+      popUp.classList.toggle("active")
+      body.style.overflowY = "scroll"
+    }
+    else {
+      popUp.classList.toggle("active")
+      popUp.style.overflowY = "scroll"
+      body.style.overflowY = "hidden"
+    }
+  }
 }
 
 let cartProducts = [];
@@ -25,3 +41,9 @@ cartProducts.innerHTML = "";
       localStorage.setItem('cart', JSON.stringify(leftProducts))
       window.location.reload()
 }
+
+
+let productsAmount = JSON.parse(localStorage.getItem('cart')).length;
+let totalPrice = JSON.parse(localStorage.getItem('cart')).reduce((total, products) => total + parseInt(products[4]), 0)
+document.querySelector('.amount').innerHTML = `Amount of products: ${productsAmount}`;
+document.querySelector('.total').innerHTML = `Total price: R${totalPrice}`

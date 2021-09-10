@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
     <div id="Login">  
@@ -13,14 +14,19 @@
         <div class="login_items">
           <div class="log-form">
             <div id="form-container">
-                <form action="">
-                    <input type="text" name="email" id="email" placeholder="Email" required>
-                    <input type="password" name="password" id="password" placeholder="Password" required>
-                    <button onclick="event.preventDefault(), loginUser()" class="logi-btn" type="submit">login</button>
-                </form>
-          </div>
+                <form action="" class="form-stuff">
+                    <input class="email" type="text" name="email" id="email" placeholder="Email" required>
+                    <input class="pass" type="password" name="password" id="password" placeholder="Password" required>
+                    <div>
+                      <button onclick="event.preventDefault(), loginUser()" class="logi-btn" type="submit">login</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="boarder">
+                  <div class="link">
+                    <a href="./index.html"><span style="color: #000; ">Not a user ? Register now </span></a>
+                  </div>
         </div>
-      </div>
       <script src="./scripts/login.js"></script>
 </body>
 </html>

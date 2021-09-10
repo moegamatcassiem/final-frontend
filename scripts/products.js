@@ -18,7 +18,7 @@ function renderproducts(products) {
     <img class="product-image items" src="${data[5]}">
         <h2 class="product_name items">${data[1]}</h2>
         <p class="product_description items">${data[2]}</p>
-        <h3 class="product_price items">${data[4]}</h3>
+        <h3 class="product_price items">R ${data[4]}</h3>
         <button class="btn" onclick="addToCart(${data[0]})">Add to cart</button>
     </div>
     `;
@@ -77,13 +77,27 @@ function showAdminProducts(products) {
   products.forEach((data) => {
     container.innerHTML += ` 
     <div class="products" catergory="${data[1]}">
-      <img class="product-image items" src="${data[5]}">
-      <h2 class="product_name items">${data[1]}</h2>
-      <p class="product_description items">${data[2]}</p>
-      <h3 class="product_price items">${data[4]}</h3>
-      <button onclick="event.preventDefault(), deleteProducts(${data[0]})" class="deletebtn">delete</button>
-      <button onclick="event.preventDefault(), editProducts(${data[0]})" class="editbtn">edit</button>
-    </div>`;
+    <h3 class="product_id items">${data[0]}</h3>
+    <img class="product-image items" src="${data[5]}">
+    <h2 class="product_name items">${data[1]}</h2>
+    <p class="product_description items">${data[2]}</p>
+    <h3 class="product_price items">R ${data[4]}</h3>
+    <button onclick="event.preventDefault(), deleteProducts(${data[0]})" class="adminbtn" class="deletebtn">delete</button>
+    <button onclick="event.preventDefault(), editProducts(${data[0]})" class="adminbtn" class="editbtn">edit</button>
+    </div>
+    <div class="add-container">
+    <h2 class="add-head">Add product</h2>
+    <form class="dafe">
+      <input class="inputs" type="text" id="productName" name="product_name" placeholder="Enter the new name..." required>
+      <input class="inputs" type="text" id="productDescription" name="product_description" placeholder="Enter a new description..." required>
+      <input class="inputs" type="text" id="productQuantity" name="product_quantity" placeholder="Enter a quantity..." required>
+      <input class="inputs" type="text" id="productPrice" name="product_price" placeholder="Enter a different price..." required>
+      <input class="inputs" type="file" id="productImage" name="product_image" onchange="imageConverter()" required>
+        <button onclick="event.preventDefault(), addProducts()">Add</button>
+    </form>
+  </div>`;
+
+
   });
 }
 
@@ -102,8 +116,7 @@ fetch("https://finals-backend.herokuapp.com/get-products/")
     }
   });
 
-// Add products function
-// image converter function
+
 function imageConverter() {
   const image = document.querySelector(".imgholder");
   const file = document.querySelector("#productImage").files[0];
@@ -112,7 +125,6 @@ function imageConverter() {
   reader.addEventListener(
     "load",
     function () {
-      // convert image file to base64 string
       image.src = reader.result;
     },
     false
@@ -156,21 +168,52 @@ function deleteProducts(product_id) {
     });
 }
 
-function editProducts(product_id){
-  fetch(`https://finals-backend.herokuapp.com/edit-product/${product_id}`,{
-    method: 'PUT',
-    body: JSON.stringify({
-      product_image: productImage,
-      product_name: productName,
-      product_description: productDescription,
-      product_price: productPrice
-    }),
-    headers: {
-      "Content-type": "application/json",
-    },
-  })
-  .then((response) => response.json())
-  .then(data => {
-    window.location.reload()
-  })
+// function editProducts(product_id){
+//   fetch(`https://finals-backend.herokuapp.com/edit-product/${product_id}`,{
+//     method: 'PUT',
+//     body: JSON.stringify({
+//       product_image: productImage,
+//       product_name: productName,
+//       product_description: productDescription,
+//       product_price: productPrice
+//     }),
+//     headers: {
+//       "Content-type": "application/json",
+//     },
+//   })
+//   .then((response) => response.json())
+//   .then(data => {
+//     window.location.reload()
+//   })
+// }
+
+function editProducts() {
+  let productId = document.getElementById('productId').value
+  let productName = document.getElementById('productName').value
+  let productDescription = document.getElementById('productDescription').value
+  let productQuantity = document.getElementById('productQuantity').value
+  let productPrice = document.getElementById('productPrice').value
+  let productImage = document.getElementById('productImage').value
+  if (confirm("Are you sure you wish to update this product?")) {
+    fetch(`https://finals-backend.herokuapp.com/edit-product/${productId}/`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        product_name: productName,
+        product_description: productDescription,
+        product_quantity: productQuantity,
+        product_price: productPrice,
+        product_image: productImage
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+    .then((res) => res.json())
+    .then(data => {
+      window.location.reload()
+    })
+  }
+  else{
+    console.log('update cancelled')
+  }
 }

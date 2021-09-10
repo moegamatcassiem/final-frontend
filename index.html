@@ -12,21 +12,26 @@
     <link rel="stylesheet" href="./styles/navbar.css">
     <link rel="stylesheet" href="./styles/cart.css">
   </head>
-  <body>
+  <body class="body">
     <div class="topbar">
 
       <nav class="navbar">
         <ul class="navbar-links">
-          <li class="navbar-link"><a href="index.html" class="navbar-anchor">Home</a></li>
+          <div id="users"></div>
+          <li class="navbar-link"><a href="index.html" class="navbar-anchor">Home</i></a></li>
           <li class="navbar-link"><a href="login.html" class="navbar-anchor">Login</a></li>
           <li class="navbar-link"><a href="register.html" class="navbar-anchor">Resgister</a></li>
+          <div class="navbar-anchor" onclick="logout()">Logout</div>
         </ul>
         <button class="navbar-button" onclick="toggleNavbar()"><i class="fas fa-bars"></i></button>
       </nav>
-
       
         <nav class="cartbar">
           <ul class="cartbar-links">
+            <div class="total">
+              <div class="total"></div>
+              <div class="amount"></div>
+            </div>
               <div class="cart"></div>
           </ul>
           <button class="cartbar-button" onclick="toggleCartbar()"><i class="fas fa-shopping-cart"></i></button>
@@ -36,6 +41,7 @@
         <a href="./cart.html">Cart</a>
         <span class="numberthing"></span>
       </div> -->
+
 
       <input id="search" type="text" placeholder="Search...">
       <div id="filter-buttons">
@@ -47,33 +53,11 @@
       </div>
     </div>
 
-  <div class="add-container">
-    <h2>Add product</h2>
-    <form>
-      <input type="text" id="productName" name="product_name" placeholder="Enter the new name..." required>
-      <input type="text" id="productDescription" name="product_description" placeholder="Enter a new description..." required>
-      <input type="text" id="productQuantity" name="product_quantity" placeholder="Enter a quantity..." required>
-      <input type="text" id="productPrice" name="product_price" placeholder="Enter a different price..." required>
-      <input type="file" id="productImage" name="product_image" onchange="imageConverter()" required>
-        <button onclick="event.preventDefault(), addProducts()">Add</button>
-    </form>
-  </div>
-
-  <div class="edit-container">
-    <h2>Edit product</h2>
-    <form>
-      <input type="text" id="productName" name="product_name" placeholder="Enter the new name..." required>
-      <input type="text" id="productDescription" name="product_description" placeholder="Enter a new description..." required>
-      <input type="text" id="productQuantity" name="product_quantity" placeholder="Enter a quantity..." required>
-      <input type="text" id="productPrice" name="product_price" placeholder="Enter a different price..." required>
-      <input type="file" id="productImage" name="product_image" onchange="imageConverter()" required>
-    </form>
-  </div>
-
     <div id="product-container"></div>
     <img src="" alt="" class="imgholder">
     <script src="./scripts/products.js"></script>
     <script src="./scripts/navbar.js"></script>
     <script src="./scripts/cart.js"></script>
+    <script src="./scripts/user.js"></script>
   </body>
 </html>

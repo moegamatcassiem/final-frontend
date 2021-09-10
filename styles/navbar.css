@@ -8,7 +8,7 @@
     display: flex;
     list-style-type: none;
     flex-direction: column;
-    background: #111;
+    background: white;
     position: fixed;
       left: -100%;
     width: 10vw;
@@ -21,14 +21,25 @@
     transition: all 0.3s linear;
     z-index: 100;
     text-decoration: none;
-    color: #ff5f1f;
+    color: #000;
+    border-right:solid #000;
   }
   
   .navbar-links.active {
     top: 0;
     left: 0;
     text-decoration: none;
-    color: #ff5f1f;
+    color: #000;
+  }
+
+  .navbar-anchor{
+    text-decoration: none;
+    color: #000;
+    margin-bottom:150% ;
+  }
+
+  .navbar-anchor:hover{
+    color: red;
   }
   
   .navbar-button {
@@ -43,6 +54,17 @@
     padding: 20px;
     width: 10vw;
     color: #000;
+    width: 0px;
+    margin-left: 3%;
+  }
+
+  .navbar-button:hover{
+    background-color: white;
+    color: red;
+    border: white;
   }
   
-  
+#users{
+  margin-bottom: 150%;
+  font-size: 30px;
+}
